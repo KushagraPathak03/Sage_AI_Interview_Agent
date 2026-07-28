@@ -5,6 +5,8 @@ from app.api import router
 from app.lifespan import lifespan
 from config.settings import settings
 
+from app.router import api_router
+
 app = FastAPI(
     title=settings.app_name,
     version=settings.app_version,
@@ -22,7 +24,7 @@ app.add_middleware(
 )
 
 app.include_router(
-    router,
+    api_router,
     prefix=settings.api_v1_prefix,
 )
 
